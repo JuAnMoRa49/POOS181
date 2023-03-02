@@ -1,5 +1,24 @@
 
-from tkinter import Tk, Frame, Button
+from tkinter import Tk, Frame, Button, messagebox
+
+def mostrarMensaje():
+    messagebox.showinfo("Aviso ", "Este mensaje es para informar algo")
+    #se define la funcion para mostrar el mensaje
+    messagebox.showerror("Error:", "Todo falló con éxito")
+    #se muesta un mensaje de error
+    print(messagebox.askokcancel("Pregunta: ","El o ella jugó con tu corazón"))
+    #se muestra un mensaje para ver si acepta o deniega, para devolver un boolean
+    print(messagebox.askquestion("Co ntinuación","Quieres continuar?"))
+    #se muesta un mensaje que devuelve yes o no)
+    
+#5.-Funcion para agregar boton
+def agregarBoton():
+    #se define la funcion para agregar el boton nueevo
+    botonVerde.config(text="+", bg="white", fg="green")
+    #se restablecen los valores del boton verde
+    botonNuevo= Button(seccion3, text="Boton Nuevo")
+    #se establece que se agregará el boton nuevo
+    botonNuevo.pack()    
 
 #1.-Creación de ventana
 
@@ -25,8 +44,8 @@ seccion3.pack(expand=True, fill="both")
 
 #3.-Botoes
 
-botonAzul=Button(seccion1, text="boton azul", fg="blue")
-#se establece el boton azul en la seccion 1, con texto y color azul del texto
+botonAzul=Button(seccion1, text="boton azul", fg="blue", command=mostrarMensaje)
+#se establece el boton azul en la seccion 1, con texto y color azul del texto, y al final se agrega el mensaje
 botonAzul.place(x=60, y=60)
 #se establece la posicion del boton azul
 
@@ -39,7 +58,7 @@ botonNegro=Button(seccion2, text="boton negro", fg="black")
 botonNegro.grid(row=1, column=1)
 #similar al pasado
 
-botonVerde=Button(seccion3, text="boton verde", fg="#95E287")
+botonVerde=Button(seccion3, text="boton verde", fg="#95E287", command=agregarBoton)
 #se establece el boton verde con caracteristicas similares al primero
 botonVerde.pack()
 #se usa pack para centrarlo y que se adapte a la ventana
