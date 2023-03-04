@@ -1,18 +1,16 @@
+from tkinter import messagebox
 
-from ventana import *
-
-class login:
+class Login:
     
-    def rcorreo():
-        correo=input(str("Correo: "))
+    def __init__(self):
+        self.__correo = "juanmora"
+        self.__code = "1234"
+        
     
-    def rcode():
-        code=input(str("Contraseña: "))
-    
-    def vcorreo():
-        if (correo!="juanmora"):
-            print("Es incorrecto")
+    def verificacion(self,correov,codev):
+        if (correov==self.__correo) and (codev==self.__code):
+            messagebox.showinfo("Bienvenido ", "Tienes acceso")
+        else:
+            messagebox.showinfo("Aviso ", "Acceso no concedido")
             
-    def vcode():
-        if (code!="juanmora"):
-            print("Es incorrecto")
+    
