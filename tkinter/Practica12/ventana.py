@@ -39,7 +39,7 @@ codev.place(x=245,y=173)
 #se solicita la contraseña
 
 
-botonverificacion=juan.Button(se2,text="Verificar",bg="black", fg="#000", command=lambda:Usuario.verificacion(correov,codev))
+botonverificacion=juan.Button(se2,text="Verificar",bg="black", fg="#000", command=lambda:Usuario.verificacion(correov.get(),codev.get()))
 botonverificacion.place(x=250, y=50)
 #se establece el boton para verificar
  
