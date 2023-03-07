@@ -40,8 +40,9 @@ codev.place(x=245,y=173)
 
 
 botonverificacion=juan.Button(se2,text="Verificar",bg="black", fg="#000", command=lambda:Usuario.verificacion(correov.get(),codev.get()))
+#se establece el boton, dentro de la seccion dos,con especificaciones, que realice dentro de login la funcion verificacion, con correo y code get
 botonverificacion.place(x=250, y=50)
-#se establece el boton para verificar
+#se establece la posicion del boton
  
 
 ventana.mainloop()
