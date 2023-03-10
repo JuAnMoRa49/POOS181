@@ -1,26 +1,25 @@
 
 from tkinter import messagebox
-from Ventana import *
 import string
+import random
 
-class code:
+class Gene:
+    def __init__(self):
+        self.__code = "" 
     
-    lon=long.get()
-    mayus=may.get()
-    especial=esp.get()
-    
-    def generacion():
-        if(lon!=0):
+    def generacion(self,lon,may,esp):
+        if(lon==0):
             lon=8
+        if (may==True and esp==True):
+                self._code="".join(random.choice(string.ascii_letters+string.punctuation)for x in range (lon))
+            #junta los caracteres y selecciona random entre mayusculas, minusculas y caracteres especiales 
+        elif (may==True and esp==False):
+                self._code="".join(random.choice(string.ascii_letters)for x in range (lon))
+            #junta los caracteres y selecciona random entre mayusculas y minusculas
+        elif (may==False and esp==True):
+                self._code="".join(random.choice(string.punctuation+string.ascii_lowercase)for x in range (lon))
+            #junta los cacracteres y selecciona random entre minusculas y caracteres especiales
         else:
-            if (may == "1"):
-                may= string.ascii_letters
-                #ascii_letters es para mayusculas o minusculas
-            if (esp == "1"):
-                esp= string.punctuation
-                #puntuaction es para simbolos especiales
-            for n in range (lon):
-                car= random(may)
-                car= random(esp)
-            
-            
+                self._code="".join(random.choice(string.ascii_lowercase)for x in range (lon))
+        messagebox.showinfo("La contreseña es: ",self._code)
+        
