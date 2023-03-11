@@ -1,6 +1,10 @@
 
 from tkinter import *
 from Operaciones import *
+from Proceso import *
+
+
+Proces=Proceso(Operaciones)
 
 #1.- Se realiza la ventana
 ventana= Tk()
@@ -35,38 +39,12 @@ ingedad.grid(row=4, column=2)
 
 txtsaldo=Label(ventana, text="Saldo")
 txtsaldo.grid(row=5,column=1)
-saldo=IntVar()
-ingsaldo=Entry(ventana, textvariable=saldo)
+monto=IntVar()
+ingsaldo=Entry(ventana, textvariable=monto)
 ingsaldo.grid(row=5,column=2)
 
-
-nextbut=Button(ventana,bg="white",fg="black",text="Operaciones",command=lambda:Operaciones.sumsaldo())
-nextbut.grid(row=8,column=2)
-
-
-def Proceso():
-    
-    Ope=Operaciones()
-    
-    ventanaps= Tk()
-    ventanaps.title("Procesos de banco")
-    ventanaps.geometry("500x250")
-    ventanaps.config(bg="white")
-
-    ingsaltext=Label(ventanaps, text="Cantidad a ingresar:")
-    ingsaltext.grid(row=6,column=1)
-    ing=IntVar()
-    ingsalnum=Entry(ventanaps,textvariable=ing)
-    ingsalnum.grid(row=6, column=2)
-    
-    ingbut=Button(ventanaps, text="Ingresar")
-
-
-    retsaltext=Label(ventanaps, text="Cantidad a ingresar:")
-    retsaltext.grid(row=7,column=1)
-    ret=IntVar()
-    retsalnum=Entry(ventanaps,textvariable=ret)
-    retsalnum.grid(row=7,column=2)
+nextbut=Button(ventana, text="Siguiente", command=lambda:Proceso.ventanaps())
+nextbut.grid(row=6, column=2)
 
 ventana.mainloop()
 #se solicita que la ventana se ejecute
