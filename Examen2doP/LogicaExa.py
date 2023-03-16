@@ -1,15 +1,14 @@
 
 from tkinter import messagebox
-import string
 import random
 
 
 class Gene:
     
     def __init__(self):
-        self.__gena =""
+        pass
         
-    
+        
     def generacion(self,nomb,prim,segu,anon,anoc,carr,num):
         
         nomb=nomb[0].upper()
@@ -20,4 +19,7 @@ class Gene:
         carr=carr[0:3].upper()
         num=random.randint(0,9)
         
-        self._gena = "".join([nomb,prim,segu,anon,anoc,carr,str(num)])
+        gena= "".join([nomb,prim,segu,anon,anoc,carr,str(num)])
+        
+        return  messagebox.showinfo("La matricula es: ", gena)
+        
