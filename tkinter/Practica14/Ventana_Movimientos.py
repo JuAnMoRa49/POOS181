@@ -1,7 +1,8 @@
 from tkinter import Tk, Label, Entry, Button, messagebox
+from Ventana_Registro import *
+
 
 class Ventana_Movimientos:
-
     
     def ventana(self):
         
@@ -12,7 +13,7 @@ class Ventana_Movimientos:
         
         consulta_txt = Label(ventana, text="Consulta de saldo:")
         consulta_txt.grid(row=0, column=0)
-        consulta_button = Button(ventana, text="Consultar", command=lambda: self.consulta_saldo())
+        consulta_button = Button(ventana, text="Consultar", command=lambda: self.consulta_saldo(self.saldo_inicial))
         consulta_button.grid(row=0, column=1)
         
         aumento_txt = Label(ventana, text="Deposito de saldo:")
@@ -51,8 +52,7 @@ class Ventana_Movimientos:
     def aumento_saldo(self, aumento):
         self.aumento = aumento
         self.saldo_inicial += aumento
-        messagebox.showinfo(messagebox.showinfo("Deposito éxitoso"), self.saldo_inicial)
-        
+        messagebox.showinfo("Deposito éxitoso", self.saldo_inicial)
         return 
     
     def disminucion_saldo(self, disminucion):

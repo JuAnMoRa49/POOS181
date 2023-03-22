@@ -2,13 +2,6 @@ from tkinter import *
 
 
 class Ventana_Registro:
-    
-    
-    def __init__(self, saldo_inicial):
-        from Ventana_Movimientos import Ventana_Movimientos
-        self.ventana_movimientos = Ventana_Movimientos(saldo_inicial)
-        self.saldo_inicial = saldo_inicial
-        
         
     def ventana_registro(self):
         ventana=Tk()
@@ -37,7 +30,7 @@ class Ventana_Registro:
         # creo los campos de entrada y de entry de saldo
         saldo_txt = Label(ventana, text="Saldo:")
         saldo_txt.grid(row=3, column=0)
-        saldo_dato = Entry(ventana)
+        saldo_dato = Entry(ventana,textvariable=self.saldo_inicial)
         saldo_dato.grid(row=3, column=1)
 
         # se establece el botón de registro
@@ -57,5 +50,5 @@ class Ventana_Registro:
 
             
     
-ventana = Ventana_Registro(saldo_inicial=0)
+ventana = Ventana_Registro()
 ventana.ventana_registro()

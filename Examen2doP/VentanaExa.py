@@ -12,7 +12,7 @@ class Principal:
 
     nom_txt = Label(ventana, text="Nombre(s):")
     nom_txt.grid(row=0, column=0)
-    nombre=str()
+    nombre=str
     nom_entry = Entry(ventana,textvariable=nombre)
     nom_entry.grid(row=0, column=1)
 
@@ -48,13 +48,25 @@ class Principal:
     carrera_entry = Entry(ventana,textvariable=carrera)
     carrera_entry.grid(row=5, column=1)
 
-        
-    #me falló en los geters para los entry, no sé si es porque no los estoy llamando bien o porque no los estoy llamando en el método de la clase Gene
-    
-    boton_generar=Button(ventana, text="Generar", command=lambda:Gene.generacion(nombre.get(),primer.get(),segundo.get(),anonac.get(),anocur.get(),carrera.get()))
+    def obtener(self):
+        nombre = self.nom_entry.get()
+        primer = self.pri_apellido_entry.get()
+        segundo = self.seg_apellido_entry.get()
+        anonac = self.ano_nac_entry.get()
+        anocur = self.ano_curso_entry.get()
+        carrera = self.carrera_entry.get()
+        return nombre, primer, segundo, anonac, anocur, carrera
+
+    def iniciar(self):
+        # Crear objeto Gene
+        gene = Gene()
+        # Llamar al método generacion del objeto Gene
+        cadena_aleatoria = gene.generacion(*self.obtener())
+        print(cadena_aleatoria)
+
+    boton_generar = Button(ventana, text="Generar", command=iniciar)
     boton_generar.grid(row=6,column=1)
 
-
-
-vp=Principal
+vp=Principal()
 vp.ventana.mainloop()
+vp.iniciar()
