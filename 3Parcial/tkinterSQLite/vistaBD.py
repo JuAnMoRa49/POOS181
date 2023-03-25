@@ -3,6 +3,20 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 
+#1.- se realiza la importacion de clase para que se conozcan
+from controladorBD import *
+
+#2.-creamos un objeto de la clase Controlador BD
+
+#(nombre del objeto) = (clase importada)
+controlador = controladorBD()
+
+#3.-Funcion para el boton
+def ejecutaInsert():
+    #se ingresan los datos obtenidos desde aqui
+    controlador.guardarUsuario(varNom.get(),varCor.get(),varCon.get())
+
+
 Ventana=Tk()
 Ventana.title("CRUD de Usuarios")
 Ventana.geometry("500x300")
@@ -29,7 +43,8 @@ varCon=tk.StringVar()
 etqCon=Label(pestana1,text="Contraseña: ").pack()
 txtCon=Entry(pestana1,textvariable=varCon).pack()
 
-butGuardar=Button(pestana1,text="Guardar Usuario").pack()
+
+butGuardar=Button(pestana1,text="Guardar Usuario",command=ejecutaInsert).pack()
 
 
 
