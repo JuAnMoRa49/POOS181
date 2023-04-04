@@ -46,6 +46,23 @@ class controladorBD:
             conx.close
             messagebox.showinfo("Bien","Se ha guardado el usuario")
             
+    def actualizarUsuario(self,id,nom,cor,con):
+        conx=self.conexionBD()
+        
+        if(id=="" or nom=="" or cor=="" or con==""):
+            messagebox.showinfo("Aguas", "Formulario incompleto")
+            
+        else:
+            cursor=conx.cursor()
+            conH=self.encriptarCon(con)
+            datos=(nom,cor,conH,id)
+            qrUpdate="update TBRegistrados set Nombre=?, Correo=?, Contra=? where id=?"
+            
+            cursor.execute(qrUpdate,datos)
+            conx.commit()
+            conx.close
+            messagebox.showinfo("Bien","Se ha actualizado el usuario")
+            
             
     def encriptarCon(self,con):
         conPlana= con
@@ -82,3 +99,14 @@ class controladorBD:
                 
             except sqlite3.OperationalError:
                 print("Error Consulta")
+                
+                
+    #metodo para conocer los usuarios registrados
+    
+    def VerUsuarios(self):
+        conx=self.conexionBD()
+        self.cursor=conx.cursor()
+        
+        self.cursor.execute("select * from TBRegistrados")
+        usuarios=self.cursor.fetchall()
+        return usuarios
