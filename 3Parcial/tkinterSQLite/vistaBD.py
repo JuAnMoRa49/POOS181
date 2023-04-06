@@ -32,6 +32,9 @@ def ejecutaSelectU():
     else:
         messagebox.showinfo("No existe","El usuario no se encontro")
 
+def deleteUsuario():
+    controlador.EliminarUsuario(varIdEli.get())
+
 
 cade=str(ejecutaSelectU)
 
@@ -72,13 +75,10 @@ butGuardar=Button(pestana1,text="Guardar Usuario",command=ejecutaInsert).pack()
 titulo2=Label(pestana2, text="Buscar Usuarios",fg="black", font=("Modern",18)).pack()
 
 varBus=tk.StringVar()
-etqId=Label(pestana2,text="Identificador Usuario: ").pack()
-txtId=Entry(pestana2,textvariable=varBus).pack()
+etqBus=Label(pestana2,text="Identificador: ").pack()
+txtBus=Entry(pestana2,textvariable=varBus).pack()
 
-btnBus=Button(pestana2,text="Buscar",command=ejecutaSelectU).pack()
-
-subBus=Label(pestana2,text="Encontrado:",fg="blue",font=("Modern",15)).pack()
-txtEnc=tk.Text(pestana2,height=5,width=52).pack()
+butBuscar=Button(pestana2,text="Buscar",command=ejecutaSelectU).pack()
 
 
 #pestaña 3, para consultar todos los usuarios
@@ -95,6 +95,7 @@ tree.heading("n0",text="ID")
 tree.heading("n1",text="Nombre")
 tree.heading("n2",text="Correo")
 tree.heading("n3",text="Contraseña")
+
 
 tree.grid(column=0,row=1,padx=10, pady=10)
 
@@ -127,7 +128,7 @@ varConAct=tk.StringVar()
 etqConAct=Label(pestana4,text="Contraseña: ").pack()
 txtConAct=Entry(pestana4,textvariable=varConAct).pack()
 
-butGuardar=Button(pestana1,text="Actualizar Usuario",command=ejecutaInsert).pack()
+butGuardar=Button(pestana4,text="Actualizar Usuario",command=ejecutaUpdate).pack()
 
     
 #pestaña 5, para eliminar un usuario
@@ -136,9 +137,10 @@ titulo5=Label(pestana5, text="Eliminar Usuarios",fg="black", font=("Modern",18))
 
 
 varIdEli=tk.StringVar()
-etqIdEli=Label(pestana4,text="Identificador: ").pack()
-txtIdEli=Entry(pestana4,textvariable=varIdEli).pack()
+etqIdEli=Label(pestana5,text="Identificador: ").pack()
+txtIdEli=Entry(pestana5,textvariable=varIdEli).pack()
 
+butEli=Button(pestana5,text="Eliminar",command=deleteUsuario).pack()
 
 
 #definicion de las pestañas

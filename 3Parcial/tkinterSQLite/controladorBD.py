@@ -110,3 +110,14 @@ class controladorBD:
         self.cursor.execute("select * from TBRegistrados")
         usuarios=self.cursor.fetchall()
         return usuarios
+    
+    def EliminarUsuario(self):
+        conx=self.conexionBD()
+        self.cursor=conx.cursor()
+        
+        self.cursor.execute("delete * from TBRegistrados")
+        
+        conx.commit()
+        conx.close()
+        messagebox.showinfo("Bien","Se ha eliminado el usuario")
+        
