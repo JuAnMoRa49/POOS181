@@ -7,9 +7,8 @@ class logicaBD:
         pass
     
     def conexionBD(self):
-    
         try:
-            conexion = sqlite3.connect("/Users/juanmontoya/Desktop/UPQ/5 cuatri/POO/Parcial 1/Git/POOS181/Examen3Parcial/BDImportaciones.db")
+            conexion = sqlite3.connect("/Users/juanmontoya/Desktop/UPQ/5 cuatri/POO/Examen3Parcial/Examen3Parcial/BDImportaciones.db")
             print("Conectado a la BD")
             return conexion
         
@@ -18,29 +17,26 @@ class logicaBD:
             
             
             
-    def guardarProducto(self,Mercancia,Pais):
-        
-        #1.-se usa la conexion pasada
+            
+    def guardarMercancia(self,Mercancia,Pais):
+
         conx=self.conexionBD()
-        
-        #2.-se validan los parametors, para que no haya vacios
         
         if(Mercancia=="" or Pais==""):
             messagebox.showinfo("Aguas", "Formulario incompleto")
             
         else:
             
-            #3.-preparamos los datos 
-            #cursor es el que ejecuta los movimientos a la base de datos
+            #haz que cursor sea un objeto de la clase cursor
+            
             cursor=conx.cursor()
             datos=(Mercancia,Pais)
-            qrInsert="insert into TB_Europa(Mercancia, Pais) values(?,?)"
+            qrInsert="insert into TB_Europa(Mercancia,Pais) values(?,?)"
             
-            #4.-ejecuta Insert y cerramos Conexion
             cursor.execute(qrInsert,datos)
             conx.commit()
             conx.close
-            messagebox.showinfo("Bien","Se ha guardado el usuario")
+            messagebox.showinfo("Bien","Se ha guardado la mercancia y el pais")
             
             
     def EliminarProducto(self):
@@ -51,5 +47,17 @@ class logicaBD:
         
         conx.commit()
         conx.close()
-        messagebox.showinfo("Bien","Se ha eliminado el usuario")
+        messagebox.showinfo("Bien","Se ha eliminado la mercancia")
         
+        
+    def consultaPais(self):
+        conx=self.conexionBD()
+        cursor=conx.cursor()
+        
+        self.cursor.execute("select * from TB_Europa where Pais=?")
+        
+        for i in self.cursor:
+            self.tree.insert("",0,text=i[0],values=(i[1],i[2]))
+        
+        conx.commit()
+        conx.close()
