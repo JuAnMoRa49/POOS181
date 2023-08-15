@@ -15,6 +15,7 @@ def InsertarProducto():
 def eliminaTodo():
     logica.EliminarProducto(varEliProducto.get())
     
+    
 def consultaPais():
     logica.consultaPais(varBusPais.get())
 
